@@ -1,0 +1,149 @@
+    body {
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 6px rgba(233, 228, 228, 0.1);
+    gap: 0px;
+  }
+  
+  #grid_container {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 0px;
+    border: 1px solid #ccc;
+    margin-top: 20px;
+  }
+  
+  .grid-cell {
+    width: 20px; 
+    height: 20px; 
+    background-color: white; 
+    border: 1px solid #ddd; 
+    box-sizing: border-box; 
+    transition: background-color 0.2s ease;
+  }  
+
+  .start {
+    background-color: #63b94d;
+  }
+  
+  .end {
+    background-color: #e74c3c; 
+  }
+  
+  .obstacle {
+    background-color: #434343; 
+  }
+  
+  .visited {
+    background-color: #636df6; 
+  }
+  
+  .shortest-path {
+    background-color: #09ebab; 
+  }
+  
+  .target {
+    background-color: red;  
+  }
+
+  .buttons_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  button, select {
+    padding: 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #3498db; 
+    color: white;
+    transition: background-color 0.2s ease;
+  }
+  
+  button:hover, select:hover {
+    background-color: #2980b9; 
+  }
+  
+  select {
+    width: 120px;
+  }
+
+  h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+
+  @media screen and (max-width: 600px) {
+    .container {
+      padding: 10px;
+    }
+    
+    .grid-cell {
+      width: 15px;
+      height: 15px;
+    }
+  }
+
+  .header {
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 20px;
+  }
+  
+  .back-button {
+    color: #f5f3f3;
+    background-color: #090000;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    padding: 8px 12px;
+    border-radius: 5px;
+  }
+  
+  .back-button:hover {
+    color: #a30f0f;
+    background-color: #b0de31;
+  }
+  
+  .header-title {
+    font-size: 24px;
+    align-content: center;
+  }
+  
+  .footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  #select_target_btn, #remove_target_btn {
+  margin-left: 10px;
+}

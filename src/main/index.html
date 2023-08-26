@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pathfinding Visualizer</title>
+
+<link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+	<div class="navbar">
+		<a href="#">Home</a> <a href="#about">About</a>
+	</div>
+	<div id="about">
+		<h1>Algorithm Visualizer</h1>
+		<hr>
+		<p>Welcome to the Algorithm Visualizer! This application allows
+			you to visualize various pathfinding, searching and sorting
+			algorithms.</p>
+	</div>
+
+	<div class="info-section">
+		<div class="dynamic-sentence">
+			<p id="dynamic-text"></p>
+		</div>
+		<hr>
+	</div>
+	<section class="image-section">
+		<h2>Select your visualization</h2>
+		<div class="image-list">
+		  <div class="image-item">
+			<a href="../../pathfinding/index.html">
+			  <img src="../test/path.jpg" alt="Product 1" />
+			  <p>Pathfinding</p>
+		    </a>
+		  </div>
+		  <div class="image-item">
+			<a href="../../searching/index.html">
+			<img src="../test/search.png" alt="Product 2" />
+			<p>Searching</p>
+			</a>
+		  </div>
+		  <div class="image-item">
+			<a href="../../sorting/index.html">
+			<img src="../test/sort.png" alt="Product 3" />
+			<p>Sorting</p>
+		    </a>
+		  </div>
+		</div>
+	  </section>
+
+	  <footer class="site-footer">
+		<div class="contact-form">
+		  <h3>Contact Us</h3>
+		  <form action="https://formsubmit.co/a409f3a18f8475f3eb0ab928ab08751a" method="POST">
+			<label for="name"></label>
+			<input type="text" id="name" name="name" placeholder="Your name" required>
+	
+			<label for="email"></label>
+			<input type="email" id="email" name="email" placeholder="email@example.com" required>
+	
+			<label for="message"></label>
+			<textarea id="message" name="message" rows="4" placeholder="Your message here..." required></textarea>
+	
+			<button type="submit">Send Message</button>
+		  </form>
+		</div>
+		<div class="footer-info">
+		  <p>&copy; Algorithm Visualizer. All rights reserved.</p>
+		  <p><a href="privacy-policy.html">Author</a> | <a href="terms-of-use.html">Terms of Use</a></p>
+		</div>
+	  </footer>
+	  
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+			const dynamicText = document.getElementById('dynamic-text');
+			const sentence = 'Where learning meets fun.';
+			let currentChar = 0;
+
+			function typeWriter() {
+				if (currentChar < sentence.length) {
+					dynamicText.textContent += sentence.charAt(currentChar);
+					currentChar++;
+					setTimeout(typeWriter, 100);
+				} else {
+					setTimeout(resetAnimation, 2000);
+				}
+			}
+
+			function resetAnimation() {
+				dynamicText.textContent = '';
+				currentChar = 0;
+				setTimeout(typeWriter, 0);
+			}
+
+			typeWriter();
+		});
+	</script>
+</body>
+</html>
+
+
+
+
+
