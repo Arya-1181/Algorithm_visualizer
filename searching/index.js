@@ -64,6 +64,7 @@ function renderBars(array) {
 }
 
 randomize_array.addEventListener("click", function () {
+  resetTimer();
   unsorted_array = createRandomArray();
   bars_container.innerHTML = "";
   renderBars(unsorted_array);
@@ -137,18 +138,48 @@ async function BinarySearch(array,target){
   return array;
 }
 
-search_btn.addEventListener("click", function () {
+search_btn.addEventListener("click",async function () {
+  startTimer();
   switch (algotouse) {
     case "linaer":
-      LinearSearch(unsorted_array,target);
+      await LinearSearch(unsorted_array,target);
       break;
     
     case "binary":
-      BinarySearch(unsorted_array,target);
+      await BinarySearch(unsorted_array,target);
       break;
     
     default:
-      LinearSearch(unsorted_array,target);
+      await LinearSearch(unsorted_array,target);
       break;
   }
+  stopTimer();
 });
+
+
+let timerInterval;
+
+function updateTimer(timeElapsed) {
+  const timerElement = document.getElementById("timer");
+  const seconds = (timeElapsed/1000).toFixed(1);
+//  const milliseconds = (timeElapsed%1000).toFixed(1);
+  timerElement.textContent = `${seconds} s`;
+}
+
+function startTimer() {
+  let startTime = performance.now();
+  timerInterval = setInterval(() => {
+    const currentTime = performance.now();
+    const elapsedTime = currentTime - startTime;
+    updateTimer(elapsedTime);
+  }, 10); 
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+}
+
+function resetTimer() {
+  const timerElement = document.getElementById("timer");
+  timerElement.innerHTML = '<span class="timer-text">0</span><span class="timer-unit">s</span>';
+}
