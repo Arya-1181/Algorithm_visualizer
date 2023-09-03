@@ -63,6 +63,7 @@ function sleep(ms) {
 }
 
 clear.addEventListener("click", function(){
+  resetTimer();
   renderGrid(grid);
 });
 
@@ -283,27 +284,56 @@ async function AStar(grid){
   return grid;
 }
 
-startBtn.addEventListener("click" , function(){
+startBtn.addEventListener("click" ,async function(){
+  startTimer();
   switch(algotouse){
     
     case "dijkstra" :
-    dijkstra(grid,numRows, numCols, rt, ct, speedFactor);
+    await dijkstra(grid,numRows, numCols, rt, ct, speedFactor);
     break;
 
     case "A_Star":
-      AStar(grid);
+      await AStar(grid);
       break;
     
     case "BFS":
-      BFS(grid);
+      await BFS(grid);
       break;
 
     case "DFS":
-      DFS(grid);
+      await DFS(grid);
       break;
 
     default:
-      dijkstra(grid,numRows, numCols, rt, ct, speedFactor);
+      await dijkstra(grid,numRows, numCols, rt, ct, speedFactor);
       break;
   }
+  stopTimer();
 });
+
+let timerInterval;
+
+function updateTimer(timeElapsed) {
+  const timerElement = document.getElementById("timer");
+  const seconds = (timeElapsed/1000).toFixed(1);
+//  const milliseconds = (timeElapsed%1000).toFixed(1);
+  timerElement.textContent = `${seconds} s`;
+}
+
+function startTimer() {
+  let startTime = performance.now();
+  timerInterval = setInterval(() => {
+    const currentTime = performance.now();
+    const elapsedTime = currentTime - startTime;
+    updateTimer(elapsedTime);
+  }, 10); 
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+}
+
+function resetTimer() {
+  const timerElement = document.getElementById("timer");
+  timerElement.innerHTML = '<span class="timer-text">0</span><span class="timer-unit">s</span>';
+}
