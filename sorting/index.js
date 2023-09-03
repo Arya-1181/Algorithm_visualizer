@@ -56,6 +56,7 @@ function renderBars(array) {
 }
 
 randomize_array.addEventListener("click", function () {
+  resetTimer();
   unsorted_array = createRandomArray();
   bars_container.innerHTML = "";
   renderBars(unsorted_array);
@@ -301,43 +302,59 @@ async function mergeSort(arr) {
   return arr;
 }
 
-function mergeSortD(arr, start, end) {
-  if (arr.length < 2) {
-    return arr;
-  }
-
-  let middle = Math.floor((start + end) / 2);
-  let left = arr.slice(start, middle);
-  let right = arr.slice(middle, end);
-
-  mergeSort(right);
-}
-
-sort_btn.addEventListener("click", function () {
+sort_btn.addEventListener("click", async function () {
+  startTimer();
   switch (algotouse) {
     case "bubble":
-      bubbleSort(unsorted_array);
+      await bubbleSort(unsorted_array);
       break;
     
     case "merge":
-      mergeSort(unsorted_array);
+      await mergeSort(unsorted_array);
       break;
         
     case "heap":
-      HeapSort(unsorted_array);
+      await HeapSort(unsorted_array);
       break;
     
     case "insertion":
-      InsertionSort(unsorted_array);
+      await InsertionSort(unsorted_array);
       break;
     
     case "quick":
-      console.log(unsorted_array.length);
-      quickSort(unsorted_array, 0, unsorted_array.length - 1);
+      await quickSort(unsorted_array, 0, unsorted_array.length - 1);
       break;
     
     default:
-      bubbleSort(unsorted_array);
+      await bubbleSort(unsorted_array);
       break;
   }
+  stopTimer();
 });
+
+let timerInterval;
+
+function updateTimer(timeElapsed) {
+  const timerElement = document.getElementById("timer");
+  const seconds = (timeElapsed/1000).toFixed(1);
+//  const milliseconds = (timeElapsed%1000).toFixed(1);
+  timerElement.textContent = `${seconds} s`;
+}
+
+function startTimer() {
+  let startTime = performance.now();
+  timerInterval = setInterval(() => {
+    const currentTime = performance.now();
+    const elapsedTime = currentTime - startTime;
+    updateTimer(elapsedTime);
+  }, 10); 
+}
+
+function stopTimer() {
+  clearInterval(timerInterval);
+}
+
+function resetTimer() {
+  const timerElement = document.getElementById("timer");
+  timerElement.innerHTML = '<span class="timer-text">0</span><span class="timer-unit">s</span>';
+}

@@ -146,3 +146,59 @@
 .legend-sorted {
   background-color: rgb(21, 233, 21);
 }
+
+.circular-timer {
+  position: relative;
+  width: 80px; 
+  height: 80px; 
+  margin: 20px auto;
+  padding-left: 50px;
+}
+
+.timer-content {
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: #30139a;
+  z-index: 2;
+}
+
+.timer-text {
+  margin-bottom: 5px;
+}
+
+.timer-unit {
+  font-size: 16px; 
+}
+
+.dial-ring {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border: 5px solid transparent; 
+  border-top-color: #081baa; 
+  border-radius: 50%;
+  animation: rotate 1s linear infinite; 
+  z-index: 1;
+}
+
+@keyframes rotate {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
