@@ -147,3 +147,95 @@
   #select_target_btn, #remove_target_btn {
   margin-left: 10px;
 }
+
+.legend {
+  display: flex;
+  align-items: center; 
+  margin-top: 20px;
+  margin-left: 20px; 
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border: 1px solid #000;
+}
+
+.legend-unsorted {
+  background-color: #10db27;
+}
+
+.legend-swap {
+  background-color: #393ec6;
+}
+
+.legend-sorted {
+  background-color: rgb(189, 0, 0);
+}
+
+.legend-start{
+  background-color: #09ebab;
+}
+
+.circular-timer {
+  position: relative;
+  width: 80px; 
+  height: 80px; 
+  margin: 20px auto;
+  padding-left: 50px;
+}
+
+.timer-content {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  font-weight: bold;
+  color: #30139a;
+  z-index: 2;
+}
+
+.timer-text {
+  margin-bottom: 10px;
+}
+
+.timer-unit {
+  font-size: 12px; 
+}
+
+.dial-ring {
+  position: absolute;
+  width: 90%;
+  height: 120%;
+  border: 5px solid transparent; 
+  border-top-color: #081baa; 
+  border-radius: 70%;
+  animation: rotate 1s linear infinite; 
+  z-index: 1;
+}
+
+@keyframes rotate {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
