@@ -114,3 +114,35 @@
   #select_target_btn, #remove_target_btn {
   margin-left: 10px;
 }
+
+.legend {
+  display: flex;
+  align-items: center; 
+  margin-top: 20px;
+  margin-left: 20px; 
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  border: 1px solid #000;
+}
+
+.legend-unsorted {
+  background-color: red;
+}
+
+.legend-swap {
+  background-color: rgb(164, 43, 43);
+}
+
+.legend-sorted {
+  background-color: rgb(21, 233, 21);
+}
